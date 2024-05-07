@@ -120,6 +120,11 @@ class Score:
         self.fonto = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
         self.font
 
+class Explosion:
+    def __init__(self):
+        ex = pg.transform.rotozoom(pg.image.load("fig/explision.gif"), 0, 2.0)
+
+
 
 
 # def main():
@@ -149,7 +154,6 @@ class Score:
 #         pg.display.update()
 #         tmr += 1
 #         clock.tick(50)
-
 
 if __name__ == "__main__":
     pg.init()
