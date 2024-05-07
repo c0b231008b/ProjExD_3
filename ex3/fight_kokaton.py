@@ -5,8 +5,8 @@ import time
 import pygame as pg
 
 
-WIDTH = 1600  # ゲームウィンドウの幅
-HEIGHT = 900  # ゲームウィンドウの高さ
+WIDTH = 900  # ゲームウィンドウの幅
+HEIGHT = 600  # ゲームウィンドウの高さ
 NUM_OF_BOMBS = 2  # 爆弾の数
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -145,13 +145,12 @@ class Score:
         self.color = (0, 0, 255)  # 文字色の設定（青）
         self.value = 0  # スコアの初期値の設定
         self.img = self.fonto.render(f"Score: {self.value}", True, self.color)  # 文字列Surfaceの生成
-        self.pos = (300, HEIGHT - 400)  # 文字列の中心座標
+        self.pos = (100, HEIGHT - 100)  # 文字列の中心座標
 
     def update(self, screen: pg.Surface):
         """
         現在のスコアを表示する
         """
-        score_text = f"Score: {self.value}"
         self.img = self.fonto.render(f"Score: {self.value}", True, self.color)  # スコア文字列を更新
         screen.blit(self.img, self.pos)  # スクリーンにスコアを描画
 
@@ -178,7 +177,6 @@ def main():
         for bomb in bombs:
             if bird.rct.colliderect(bomb.rct):
                 # ゲームオーバー時に，こうかとん画像を切り替え，1秒間表示させる
-                score.value += 1
                 score.update(screen)
                 bird.change_img(8, screen)
                 pg.display.update()
